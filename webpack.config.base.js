@@ -2,6 +2,7 @@ import path from 'path';
 
 export default {
   module: {
+    noParse: /node_modules\/json-schema\/lib\/validate\.js/,
     loaders: [{
       test: /\.jsx?$/,
       loaders: ['babel-loader'],

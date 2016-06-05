@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import styles from './Counter.css';
+import db from '../utils/db.js'
 
 class Counter extends Component {
   static propTypes = {
@@ -10,6 +11,10 @@ class Counter extends Component {
     decrement: PropTypes.func.isRequired,
     counter: PropTypes.number.isRequired
   };
+
+  incrementIfOdd() {
+    this.props.incrementIfOdd()
+  }
 
   render() {
     const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props;
@@ -30,7 +35,7 @@ class Counter extends Component {
           <button className={styles.btn} onClick={decrement}>
             <i className="fa fa-minus"></i>
           </button>
-          <button className={styles.btn} onClick={incrementIfOdd}>odd</button>
+          <button className={styles.btn} onClick={this.incrementIfOdd.bind(this)}>odd</button>
           <button className={styles.btn} onClick={() => incrementAsync()}>async</button>
         </div>
       </div>
